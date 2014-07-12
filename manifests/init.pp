@@ -1,4 +1,4 @@
 class r_dnsmasq {
 
-    include dnsmasq
+  include ::dnsmasq
 }
