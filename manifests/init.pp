@@ -12,6 +12,8 @@ class r_dnsmasq (
       effective_uid => $dnsmasq['effective_uid'],
       effective_gid => $dnsmasq['effective_gid'],
       dhcp_range    => $dnsmasq['dhcp_range'],
+      log_queries   => $dnsmasq['log_queries'],
+      log_dhcp      => $dnsmasq['log_dhcp'],
     }
   }
 }
