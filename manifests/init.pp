@@ -1,8 +1,14 @@
 class r_dnsmasq (
 
-  $dnsmasq = undef,
+  $pxelinux = undef,
+  $dnsmasq  = undef,
 
 ) {
+
+  if $pxelinux {
+    class { 'pxelinux':
+    }
+  }
 
   if $dnsmasq {
     class { 'dnsmasq':
