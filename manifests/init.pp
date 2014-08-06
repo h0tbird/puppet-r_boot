@@ -7,6 +7,7 @@ class r_dnsmasq (
 
   if $pxelinux {
     class { 'pxelinux':
+      version => $pxelinux['version'],
     }
   }
 
@@ -20,6 +21,8 @@ class r_dnsmasq (
       dhcp_range    => $dnsmasq['dhcp_range'],
       log_queries   => $dnsmasq['log_queries'],
       log_dhcp      => $dnsmasq['log_dhcp'],
+      enable_tftp   => $dnsmasq['enable_tftp'],
+      tftp_root     => $dnsmasq['tftp_root'],
     }
   }
 }
