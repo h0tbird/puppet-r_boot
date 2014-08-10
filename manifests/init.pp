@@ -23,6 +23,7 @@ class r_dnsmasq (
       log_dhcp      => $dnsmasq['log_dhcp'],
       enable_tftp   => $dnsmasq['enable_tftp'],
       tftp_root     => $dnsmasq['tftp_root'],
+      dhcp_boot     => $dnsmasq['dhcp_boot'],
     }
   }
 }
