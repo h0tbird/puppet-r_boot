@@ -1,7 +1,7 @@
 class r_boot::dnsmasq inherits r_boot {
 
   if $dnsmasq {
-    class { 'dnsmasq':
+    class { '::dnsmasq':
       ensure        => $dnsmasq['ensure'],
       enable        => $dnsmasq['enable'],
       version       => $dnsmasq['version'],
