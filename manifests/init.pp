@@ -1,4 +1,4 @@
-class r_dnsmasq (
+class r_boot (
 
   $pxelinux = undef,
   $dnsmasq  = undef,
