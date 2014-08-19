@@ -1,4 +1,4 @@
-puppet-r_dnsmasq
-================
+puppet-r_boot
+=============
 
-Puppet dnsmasq role
+Puppet boot role
