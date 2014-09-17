@@ -13,6 +13,10 @@ class r_boot::dnsmasq inherits r_boot {
       enable_tftp   => $dnsmasq['enable_tftp'],
       tftp_root     => $dnsmasq['tftp_root'],
       dhcp_boot     => $dnsmasq['dhcp_boot'],
+      domain_needed => $dnsmasq['domain_needed'],
+      local         => $dnsmasq['local'],
+      expand_hosts  => $dnsmasq['expand_hosts'],
+      domain        => $dnsmasq['domain'],
     }
   }
 }
