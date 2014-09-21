@@ -28,5 +28,12 @@ class r_boot::images inherits r_boot {
       owner  => 'root',
       group  => 'root',
       mode   => '0644';
+
+    '/tftpboot/images/centos/7/x86_64/forcedeth.img':
+      ensure => present,
+      source => "puppet:///modules/${module_name}/centos/7/x86_64/forcedeth.img",
+      owner  => 'root',
+      group  => 'root',
+      mode   => '0644';
   }
 }
