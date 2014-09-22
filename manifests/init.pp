@@ -8,4 +8,5 @@ class r_boot (
   contain "${module_name}::pxelinux"
   contain "${module_name}::dnsmasq"
   contain "${module_name}::images"
+  contain "${module_name}::kickstart"
 }
