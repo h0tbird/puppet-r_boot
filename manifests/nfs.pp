@@ -2,8 +2,9 @@ class r_boot::nfs inherits r_boot {
 
   if $nfs {
     class { '::nfs':
-      version => $nfs['version'],
+      ensure  => $nfs['ensure'],
       enable  => $nfs['enable'],
+      version => $nfs['version'],
     }
   }
 }
