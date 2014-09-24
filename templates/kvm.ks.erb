@@ -1,12 +1,14 @@
 install
+url --url="http://repo01.demo.lan/centos/7/os/x86_64/"
+text
 keyboard es
 lang en_US.UTF-8
+eula --agreed
 network --bootproto=dhcp --device=eth0 --onboot=on
 rootpw password
 timezone Europe/Madrid --isUtc
 selinux --disabled
 firewall --disabled
-url --url="http://repo01.demo.lan/centos/7/os/x86_64/"
 repo --name="CentOS" --baseurl=http://repo01.demo.lan/centos/7/os/x86_64/
 repo --name="Updates" --baseurl=http://repo01.demo.lan/centos/7/updates/x86_64/
 ignoredisk --only-use=sda
@@ -18,6 +20,6 @@ part /boot --fstype xfs --size=200
 part / --fstype ext4 --size=1024 --grow
 reboot
 
-%packages --excludedocs --nobase --ignoremissing
+%packages --excludedocs --ignoremissing
 @Core
 %end
