@@ -31,7 +31,7 @@ kmod-forcedeth
 %end
 
 %post --nochroot --log=/mnt/sysimage/root/ks-post-nochroot.log
-rm -f /mnt/sysimage/etc/yum.repos.d/*
+rm -f /mnt/sysimage/etc/yum.repos.d/* /tmp/yum.repos.d/anaconda.repo
 cp /tmp/yum.repos.d/* /mnt/sysimage/etc/yum.repos.d/
 %end
 
