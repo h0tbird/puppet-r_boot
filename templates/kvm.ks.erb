@@ -13,6 +13,8 @@ firewall --disabled
 repo --name="CentOS" --baseurl=http://repo01.demo.lan/centos/7/os/x86_64/
 repo --name="Updates" --baseurl=http://repo01.demo.lan/centos/7/updates/x86_64/
 repo --name="Misc" --baseurl=http://repo01.demo.lan/centos/7/misc/x86_64/
+repo --name="Puppet-products" --baseurl=http://repo01.demo.lan/puppet/puppetlabs-products/
+repo --name="Puppet-deps" --baseurl=http://repo01.demo.lan/puppet/puppetlabs-deps/
 ignoredisk --only-use=sda
 bootloader --location=mbr
 zerombr
