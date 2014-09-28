@@ -14,7 +14,7 @@ class r_boot::nfs inherits r_boot {
       owner   => 'root',
       group   => 'root',
       mode    => '0644',
-      before  => Service['nfs-server'],
+      notify  => Service['nfs-server'],
     }
   }
 }
