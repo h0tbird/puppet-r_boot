@@ -7,7 +7,7 @@ class r_boot::dnsmasq inherits r_boot {
       version       => $dnsmasq['version'],
       effective_uid => $dnsmasq['effective_uid'],
       effective_gid => $dnsmasq['effective_gid'],
-      dhcp_range    => $dnsmasq['dhcp_range'],
+      dhcp_ranges   => $dnsmasq['dhcp_ranges'],
       log_queries   => $dnsmasq['log_queries'],
       log_dhcp      => $dnsmasq['log_dhcp'],
       enable_tftp   => $dnsmasq['enable_tftp'],
@@ -17,6 +17,7 @@ class r_boot::dnsmasq inherits r_boot {
       local         => $dnsmasq['local'],
       expand_hosts  => $dnsmasq['expand_hosts'],
       domain        => $dnsmasq['domain'],
+      dhcp_hosts    => $dnsmasq['dhcp_hosts'],
     }
   }
 }
