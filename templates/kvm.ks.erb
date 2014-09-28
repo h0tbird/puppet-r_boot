@@ -31,3 +31,7 @@ kmod-forcedeth
 rm -f /mnt/sysimage/etc/yum.repos.d/*
 cp /tmp/yum.repos.d/* /mnt/sysimage/etc/yum.repos.d/
 %end
+
+%post --log=/root/ks-post-chroot.log
+rpm --import http://repo01.demo.lan/centos/7/os/x86_64/RPM-GPG-KEY-CentOS-7
+%end
