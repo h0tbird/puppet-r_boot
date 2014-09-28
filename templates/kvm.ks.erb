@@ -26,3 +26,8 @@ reboot
 @Core
 kmod-forcedeth
 %end
+
+%post --nochroot --log=/root/ks-post-nochroot.log
+rm -f /mnt/sysimage/etc/yum.repos.d/*
+cp /tmp/yum.repos.d/* /mnt/sysimage/etc/yum.repos.d/
+%end
