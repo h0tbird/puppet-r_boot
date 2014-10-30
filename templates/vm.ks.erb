@@ -16,7 +16,7 @@ repo --name="EPEL" --baseurl=http://repo01.demo.lan/centos/7/epel/
 repo --name="Misc" --baseurl=http://repo01.demo.lan/centos/7/misc/
 repo --name="Puppet-products" --baseurl=http://repo01.demo.lan/puppet/puppetlabs-products/
 repo --name="Puppet-deps" --baseurl=http://repo01.demo.lan/puppet/puppetlabs-deps/
-ignoredisk --only-use=sda
+ignoredisk --only-use=vda
 bootloader --location=mbr
 zerombr
 clearpart --all --initlabel
@@ -27,7 +27,6 @@ reboot
 
 %packages --excludedocs --ignoremissing
 @Core
-kmod-forcedeth
 rubygem-r10k
 puppet
 git
@@ -42,8 +41,4 @@ cp /tmp/yum.repos.d/* /mnt/sysimage/etc/yum.repos.d/
 rpm --import http://repo01.demo.lan/centos/7/os/x86_64/RPM-GPG-KEY-CentOS-7
 rpm --import http://repo01.demo.lan/centos/7/epel/RPM-GPG-KEY-EPEL-7
 rpm --import http://repo01.demo.lan/puppet/RPM-GPG-KEY-puppetlabs
-
-nmcli connection delete enp0s10
-nmcli connection add type bridge ifname br0
-nmcli connection add type bridge-slave ifname enp0s10 master br0
 %end
