@@ -14,5 +14,12 @@ class r_boot::kickstart inherits r_boot {
       owner   => 'root',
       group   => 'root',
       mode    => '0644';
+
+    '/kickstart/vm.ks':
+      ensure  => present,
+      content => template("${module_name}/vm.ks.erb"),
+      owner   => 'root',
+      group   => 'root',
+      mode    => '0644';
   }
 }
