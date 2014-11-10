@@ -18,6 +18,7 @@ class r_boot::dnsmasq inherits r_boot {
       expand_hosts  => $dnsmasq['expand_hosts'],
       domain        => $dnsmasq['domain'],
       dhcp_hosts    => $dnsmasq['dhcp_hosts'],
+      dhcp_options  => $dnsmasq['dhcp_options'],
     }
   }
 }
