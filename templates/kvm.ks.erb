@@ -45,23 +45,22 @@ rpm --import http://repo01.demo.lan/puppet/RPM-GPG-KEY-puppetlabs
 
 cat << EOF > /etc/sysconfig/network-scripts/ifcfg-br0
 DEVICE=br0
+NAME=br0
+TYPE=Bridge
+ONBOOT=yes
 STP=yes
 BRIDGING_OPTS=priority=32768
-TYPE=Bridge
 BOOTPROTO=dhcp
 DEFROUTE=yes
 PEERDNS=yes
 PEERROUTES=yes
-IPV4_FAILURE_FATAL=no
 IPV6INIT=no
-NAME=br0
-ONBOOT=yes
 EOF
 
 cat << EOF > /etc/sysconfig/network-scripts/ifcfg-enp0s10
-TYPE=Ethernet
-NAME=enp0s10
 DEVICE=enp0s10
+NAME=enp0s10
+TYPE=Ethernet
 ONBOOT=yes
 BRIDGE=br0
 EOF
