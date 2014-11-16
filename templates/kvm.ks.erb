@@ -43,7 +43,26 @@ rpm --import http://repo01.demo.lan/centos/7/os/x86_64/RPM-GPG-KEY-CentOS-7
 rpm --import http://repo01.demo.lan/centos/7/epel/RPM-GPG-KEY-EPEL-7
 rpm --import http://repo01.demo.lan/puppet/RPM-GPG-KEY-puppetlabs
 
-nmcli connection delete enp0s10
-nmcli connection add type bridge ifname br0
-nmcli connection add type bridge-slave ifname enp0s10 master br0
+cat << EOF > /etc/sysconfig/network-scripts/ifcfg-br0
+DEVICE=br0
+STP=yes
+BRIDGING_OPTS=priority=32768
+TYPE=Bridge
+BOOTPROTO=dhcp
+DEFROUTE=yes
+PEERDNS=yes
+PEERROUTES=yes
+IPV4_FAILURE_FATAL=no
+IPV6INIT=no
+NAME=br0
+ONBOOT=yes
+EOF
+
+cat << EOF > /etc/sysconfig/network-scripts/ifcfg-enp0s10
+TYPE=Ethernet
+NAME=enp0s10
+DEVICE=enp0s10
+ONBOOT=yes
+BRIDGE=br0
+EOF
 %end
