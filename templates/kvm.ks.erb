@@ -7,7 +7,8 @@ eula --agreed
 network --bootproto=dhcp --device=bootif --onboot=on
 rootpw password
 timezone Europe/Madrid --isUtc
-services --enabled sshd
+services --disabled auditd,avahi-daemon,NetworkManager,postfix,tuned
+services --enabled network,sshd
 selinux --disabled
 firewall --disabled
 repo --name="CentOS" --baseurl=http://repo01.demo.lan/centos/7/os/x86_64/
