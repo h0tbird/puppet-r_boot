@@ -7,7 +7,7 @@ eula --agreed
 network --bootproto=dhcp --device=bootif --onboot=on
 rootpw password
 timezone Europe/Madrid --isUtc
-services --disabled auditd,avahi-daemon,NetworkManager,postfix,tuned
+services --disabled auditd,avahi-daemon,NetworkManager,postfix,microcode,tuned
 services --enabled network,sshd
 selinux --disabled
 firewall --disabled
