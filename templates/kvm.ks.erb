@@ -69,4 +69,39 @@ TYPE=Ethernet
 ONBOOT=yes
 BRIDGE=br0
 EOF
+
+rm -rf /etc/puppet
+git clone https://github.com/h0tbird/puppet.git /etc/puppet
+rm -rf /etc/puppet/{environments,hieradata}
+mkdir -p /etc/puppet/environments/production/manifests
+mkdir -p /etc/puppet/hieradata
+
+cat << EOF > /etc/puppet/environments/production/environment.conf
+modulepath = modules:roles:\$basemodulepath
+EOF
+
+cat << EOF > /etc/puppet/environments/production/manifests/site.pp
+stage { 'pre':  before  => Stage['main'] }
+stage { 'post': require => Stage['main'] }
+Package { allow_virtual => true }
+include ::r_base
+EOF
+
+cat << EOF > /etc/puppet/environments/production/Puppetfile
+mod 'r_base',
+  :git => 'https://h0tbird@github.com/h0tbird/puppet-r_base.git'
+
+mod 'stdlib',
+  :git => 'https://github.com/puppetlabs/puppetlabs-stdlib.git',
+  :tag => '4.3.2'
+
+mod 'sshd',
+  :git => 'https://h0tbird@github.com/h0tbird/puppet-sshd.git'
+
+mod 'terminfo',
+  :git => 'https://h0tbird@github.com/h0tbird/puppet-terminfo.git'
+EOF
+
+cd /etc/puppet/environments/production
+r10k puppetfile install
 %end
