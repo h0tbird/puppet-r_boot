@@ -54,7 +54,7 @@ NAME=br0
 TYPE=Bridge
 ONBOOT=yes
 STP=yes
-BRIDGING_OPTS=priority=32768
+DELAY=0
 BOOTPROTO=dhcp
 DEFROUTE=yes
 PEERDNS=yes
@@ -92,6 +92,9 @@ r_base::terminfo:
 EOF
 
 cat << EOF > /etc/puppet/environments/production/Puppetfile
+mod 'r_kvm',
+  :git => 'https://h0tbird@github.com/h0tbird/puppet-r_kvm.git'
+
 mod 'r_base',
   :git => 'https://h0tbird@github.com/h0tbird/puppet-r_base.git'
 
