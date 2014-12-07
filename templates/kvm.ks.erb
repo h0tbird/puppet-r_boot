@@ -76,6 +76,24 @@ rm -rf /etc/puppet/{environments,hieradata}
 mkdir -p /etc/puppet/environments/production/manifests
 mkdir -p /etc/puppet/hieradata
 
+cat << EOF > /etc/puppet/hieradata/common.yaml
+---
+
+# ssh
+r_base::ssh:
+ ensure: 'running'
+ enable: true
+ version: 'latest'
+
+# terminfo
+r_base::terminfo:
+ purge: false
+ backup: false
+ recurse: 'remote'
+
+...
+EOF
+
 cat << EOF > /etc/puppet/environments/production/environment.conf
 modulepath = modules:roles:\$basemodulepath
 EOF
