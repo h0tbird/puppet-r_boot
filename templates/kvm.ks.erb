@@ -72,9 +72,6 @@ EOF
 
 rm -rf /etc/puppet
 git clone https://github.com/h0tbird/puppet.git /etc/puppet
-rm -rf /etc/puppet/{environments,hieradata}
-mkdir -p /etc/puppet/environments/production/manifests
-mkdir -p /etc/puppet/hieradata
 
 cat << EOF > /etc/puppet/hieradata/common.yaml
 ---
@@ -92,17 +89,6 @@ r_base::terminfo:
  recurse: 'remote'
 
 ...
-EOF
-
-cat << EOF > /etc/puppet/environments/production/environment.conf
-modulepath = modules:roles:\$basemodulepath
-EOF
-
-cat << EOF > /etc/puppet/environments/production/manifests/site.pp
-stage { 'pre':  before  => Stage['main'] }
-stage { 'post': require => Stage['main'] }
-Package { allow_virtual => true }
-include ::r_base
 EOF
 
 cat << EOF > /etc/puppet/environments/production/Puppetfile
